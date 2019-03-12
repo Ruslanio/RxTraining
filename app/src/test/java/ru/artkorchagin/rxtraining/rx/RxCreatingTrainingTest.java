@@ -1,7 +1,6 @@
 package ru.artkorchagin.rxtraining.rx;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -83,7 +82,6 @@ public class RxCreatingTrainingTest {
     }
 
     @Test
-    @Ignore //TODO разобраться почему не вызываеются методы тестобзервера
     public void increasingSequenceWithDelays() {
         TestObserver<Long> testObserver = new TestObserver<>();
         mRxCreatingTraining.increasingSequenceWithDelays(DELAY, PERIOD)

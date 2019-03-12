@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Emitter;
 import io.reactivex.Observable;
 import ru.artkorchagin.rxtraining.exceptions.ExpectedException;
-import ru.artkorchagin.rxtraining.exceptions.NotImplementedException;
 
 /**
  * @author Arthur Korchagin (artur.korchagin@simbirsoft.com)
@@ -61,13 +60,7 @@ public class RxCreatingTraining {
      * {@code onError} или {@code onComplete} не должны вызваться.
      */
     public Observable<Long> increasingSequenceWithDelays(long initialDelay, long period) {
-        return Observable.<Long>create(emitter -> {
-            long count = 0L;
-            for (;;) {
-                emitter.onNext(count++);
-            }
-        }).concatMap(value -> Observable.just(value).delay(period, TimeUnit.MILLISECONDS))
-                .delay(initialDelay, TimeUnit.MILLISECONDS);
+        return Observable.<Long>interval(period, TimeUnit.MILLISECONDS).delay(initialDelay, TimeUnit.MILLISECONDS);
     }
 
     /**
