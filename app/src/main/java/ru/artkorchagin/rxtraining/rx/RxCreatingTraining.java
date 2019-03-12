@@ -60,7 +60,7 @@ public class RxCreatingTraining {
      * {@code onError} или {@code onComplete} не должны вызваться.
      */
     public Observable<Long> increasingSequenceWithDelays(long initialDelay, long period) {
-        return Observable.<Long>interval(period, TimeUnit.MILLISECONDS).delay(initialDelay, TimeUnit.MILLISECONDS);
+        return Observable.<Long>interval(initialDelay, period, TimeUnit.MILLISECONDS);
     }
 
     /**
