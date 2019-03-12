@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.Observable;
-import ru.artkorchagin.rxtraining.exceptions.NotImplementedException;
 
 /**
  * @author Arthur Korchagin (artur.korchagin@simbirsoft.com)
@@ -40,7 +39,7 @@ public class RxCombiningTraining {
      */
     public Observable<List<String>> requestItems(Observable<String> searchObservable,
                                                  Observable<Integer> categoryObservable) {
-        return searchObservable.zipWith(categoryObservable, (search, category) -> searchItems(search,category));
+        return Observable.combineLatest(searchObservable, categoryObservable, (search, category) -> searchItems(search, category));
     }
 
     /**
